@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
   agent any
   
@@ -6,6 +8,13 @@ pipeline {
   }
   
   stages {
+    stage("init) {
+      steps {
+        script {
+          gv = load 'jenkinsfile_helper.groovy'
+        }
+      }    
+    }
     
     stage("build app") {
       when {
@@ -14,9 +23,8 @@ pipeline {
         }
       }
       steps {
-        echo 'start building...'
-        nodejs('Node-18.10.0') {
-          sh 'cd app && npm install'  
+        script {
+          gv.buildAppViaNpm()
         }
       }
     }
