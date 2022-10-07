@@ -8,7 +8,7 @@ pipeline {
   }
   
   stages {
-    stage("init) {
+    stage("init") {
       steps {
         script {
           gv = load 'jenkinsfile_helper.groovy'
